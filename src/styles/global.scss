@@ -40,7 +40,10 @@ img {
 
 .section-title {
   writing-mode: vertical-rl;
+  margin: 0 auto;
   padding: 10px;
+  border: 1px solid rgba(255, 255, 255);
+  border-radius: 5px;
   background-color: rgba(235, 65, 65, 0.85);
   color: yellow;
   font-size: clamp(0.9rem, 5vw, 1rem);

@@ -1,9 +1,17 @@
 ---
+import { Icon } from 'astro-icon/components';
 ---
-<section class="section">
+<section class="section" id="contact">
   <div class="inner">
     <div class="section-title">
       <h2 class="title">お問い合わせ</h2>
+    </div>
+    <div class="content">
+      <p class="lead">お問い合わせはお電話にて承っております。<br class="break" />お気軽にお問い合わせください。</p>
+      <a href="" class="tel-button">
+        <Icon name="mdi:phone" class="tel-icon" />
+        <span class="tel-number">096-369-0650</span>
+      </a>
     </div>
   </div>
 </section>
@@ -11,4 +19,47 @@
 <style lang="scss">
   @use "../../styles/variables" as *;
   @use "../../styles/mixins" as *;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 40px;
+    margin-top: 80px;
+  }
+
+  .lead {
+    font-size: clamp(0.8rem, 10vw, 1rem);
+    line-height: 2;
+
+    @include sp {
+      font-size: 0.8rem;
+    }
+  }
+
+  .tel-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 56px;
+    border: 1px solid rgba(255, 255, 255);
+    border-radius: 999px;
+    background-color: rgba(235, 65, 65, 0.85);
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    font-weight: bold;
+    color: yellow;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    transition: background-color 0.2s, color 0.2s;
+
+    @include sp {
+      padding: 16px 36px;
+    }
+  }
+
+  .tel-icon {
+    font-size: 1.5rem;
+  }
+
 </style>

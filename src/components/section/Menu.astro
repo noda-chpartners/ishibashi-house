@@ -1,14 +1,226 @@
 ---
+import { getImage } from 'astro:assets';
+
+import karaageSrc from '../../assets/images/karaage02.png';
+import hamukatsuSrc from '../../assets/images/hamukatsu02.png';
+import tanSrc from '../../assets/images/tan02.png';
+import roastSrc from '../../assets/images/roast02.png';
+import eggSrc from '../../assets/images/egg02.png';
+
+const [karaage, hamukatsu, tan, roast, egg] = await Promise.all([
+  getImage({ src: karaageSrc, format: 'webp' }),
+  getImage({ src: hamukatsuSrc, format: 'webp' }),
+  getImage({ src: tanSrc, format: 'webp' }),
+  getImage({ src: roastSrc, format: 'webp' }),
+  getImage({ src: eggSrc, format: 'webp' }),
+]);
+
+const menu = [
+  { rank: 1, name: 'からあげ', note: '1枚', price: '300円', img: karaage, alt: 'からあげ' },
+  { rank: 2, name: '至福のハムカツ', note: '', price: '500円', img: hamukatsu, alt: '至福のハムカツ' },
+  { rank: 3, name: '牛タンステーキ', note: '', price: '1,800円', img: tan, alt: '牛タンステーキ' },
+  { rank: 4, name: 'ローストビーフ(小)', note: '', price: '800円', img: roast, alt: 'ローストビーフ(小)' },
+  { rank: 5, name: 'だし巻き卵焼', note: '', price: '450円', img: egg, alt: 'だし巻き卵焼' },
+];
 ---
-<section class="section">
+<section class="section" id="menu">
   <div class="inner">
     <div class="section-title">
       <h2 class="title">人気メニュー</h2>
     </div>
+    <ul class="menu-list">
+      {
+        menu.map((item) => (
+          <li class="menu-item" data-rank={item.rank}>
+            <div class="menu-item-visual">
+              <img
+                class="menu-image"
+                src={item.img.src}
+                width={item.img.attributes.width}
+                height={item.img.attributes.height}
+                alt={item.alt}
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="menu-item-body">
+              <span class="menu-rank" aria-hidden="true">{item.rank}</span>
+              <div class="menu-detail">
+                <p class="menu-name">
+                  {item.name}
+                  {item.note && <span class="menu-note">{item.note}</span>}
+                </p>
+                <span class="menu-leader" aria-hidden="true" />
+                <p class="menu-price">{item.price}</p>
+              </div>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
   </div>
 </section>
 
 <style lang="scss">
   @use "../../styles/variables" as *;
   @use "../../styles/mixins" as *;
+
+  .menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(48px, 8vw, 96px);
+    max-width: 900px;
+    width: 100%;
+    margin: 80px auto 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .menu-item {
+    display: flex;
+    align-items: center;
+    gap: clamp(24px, 5vw, 64px);
+
+    &:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+  }
+
+  .menu-item-visual {
+    position: relative;
+    flex: 0 0 clamp(140px, 28vw, 240px);
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+
+    &::before {
+      position: absolute;
+      inset: 8%;
+      z-index: 0;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.35) 0%,
+        rgba(255, 255, 255, 0.08) 55%,
+        rgba(255, 255, 255, 0) 72%
+      );
+      content: "";
+      pointer-events: none;
+    }
+  }
+
+  .menu-image {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.28));
+  }
+
+  .menu-item-body {
+    display: flex;
+    flex: 1 1 0;
+    align-items: flex-start;
+    gap: clamp(12px, 2vw, 24px);
+    min-width: 0;
+  }
+
+  .menu-rank {
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    width: clamp(2.4rem, 5vw, 3.2rem);
+    height: clamp(2.4rem, 5vw, 3.2rem);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    border-radius: 50%;
+    background-color: rgba(235, 65, 65, 0.85);
+    color: yellow;
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    font-weight: bold;
+    line-height: 1;
+  }
+
+  .menu-detail {
+    display: flex;
+    flex: 1 1 0;
+    align-items: baseline;
+    gap: 12px;
+    min-width: 0;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    line-height: 1.6;
+  }
+
+  .menu-name {
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+
+  .menu-note {
+    margin-left: 0.5em;
+    font-size: 0.85em;
+    opacity: 0.9;
+  }
+
+  .menu-leader {
+    flex: 1 1 auto;
+    min-width: 24px;
+    height: 1em;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.55);
+  }
+
+  .menu-price {
+    flex: 0 0 auto;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  @include tb {
+    .menu-item,
+    .menu-item:nth-child(even) {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .menu-item-body {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .menu-detail {
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .menu-leader {
+      display: none;
+    }
+
+    .menu-item-visual {
+      flex: 0 0 auto;
+      width: 180px;
+      height: 180px;
+    }
+  }
+
+  @include sp {
+    .menu-list {
+      gap: 40px;
+      margin-top: 48px;
+    }
+
+    .menu-item-visual {
+      flex: 0 0 auto;
+      width: 140px;
+      height: 140px;
+    }
+
+    .menu-detail {
+      font-size: clamp(0.95rem, 4.5vw, 1.05rem);
+    }
+  }
 </style>

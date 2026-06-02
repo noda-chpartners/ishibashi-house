@@ -1,9 +1,15 @@
 ---
 ---
-<section class="section">
+<section class="section" id="about">
   <div class="inner">
     <div class="section-title">
       <h2 class="title">いしばしさん家について</h2>
+    </div>
+    <div class="content">
+      <p class="text first">熊本市東区・健軍電停近くにある居酒屋食堂 いしばしさん家。</p>
+      <p class="text second">お昼は、シンプルでどこか懐かしいカレーを。</p>
+      <p class="text third">夜は、お酒と食事を気軽に楽しめる居酒屋食堂として、</p>
+      <p class="text four">おひとり様からグループまで、ゆっくり過ごせる空間をご用意しています。</p>
     </div>
   </div>
 </section>
@@ -11,4 +17,16 @@
 <style lang="scss">
   @use "../../styles/variables" as *;
   @use "../../styles/mixins" as *;
+
+  .content {
+    text-align: center;
+    max-width: 900px;
+    width: 100%;
+    margin: 80px auto 0;
+    line-height: 3;
+    
+    @include tb {
+      text-align: left;
+    }
+  }
 </style>
