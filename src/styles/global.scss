@@ -1,0 +1,26 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.section {
+  padding: 80px 20px;
+
+  @include sp {
+    padding: 48px 20px;
+  }
+}
+
+.inner {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+}

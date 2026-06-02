@@ -1,0 +1,19 @@
+@use "variables" as *;
+
+@mixin pc {
+  @media (max-width: $bp-pc) {
+    @content;
+  }
+}
+
+@mixin tb {
+  @media (max-width: $bp-tb) {
+    @content;
+  }
+}
+
+@mixin sp {
+  @media (max-width: $bp-sp) {
+    @content;
+  }
+}
