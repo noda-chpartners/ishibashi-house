@@ -8,7 +8,7 @@ const navLinks = [
   { href: '#menu', label: '人気メニュー' },
   { href: '#info', label: '店舗情報' },
   { href: '#access', label: 'アクセス' },
-  { href: '#contact', label: 'お問い合わせ' },
+  { href: '#contact', label: 'お問い合わせ', isCta: true },
 ];
 ---
 <header class="header" data-header>
@@ -36,7 +36,12 @@ const navLinks = [
         {
           navLinks.map((link) => (
             <li>
-              <a href={link.href} class="nav-link">{link.label}</a>
+              <a
+                href={link.href}
+                class:list={['nav-link', { 'nav-link--cta': link.isCta }]}
+              >
+                {link.label}
+              </a>
             </li>
           ))
         }
@@ -114,6 +119,16 @@ const navLinks = [
       opacity: 0.8;
     }
   }
+
+  .nav-link--cta {
+  padding: 8px 20px;
+  border: 1px solid yellow;
+  border-radius: 999px;
+  background-color: rgba(235, 65, 65, 0.95);
+  &:hover {
+    opacity: 1;
+  }
+}
 
   @include tb {
     .nav-toggle {

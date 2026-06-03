@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../config/site';
 
 import Hero from '../components/section/Hero.astro';
 import About from '../components/section/About.astro';
@@ -10,7 +11,7 @@ import Contact from '../components/section/Contact.astro';
 
 ---
 
-<BaseLayout>
+<BaseLayout title={siteConfig.title} description={siteConfig.description}>
 	<Hero />
 	<About />
 	<Menu />

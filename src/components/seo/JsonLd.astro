@@ -1,0 +1,35 @@
+---
+import { siteConfig, absoluteUrl } from '../../config/site';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Restaurant',
+  name: siteConfig.name,
+  description: siteConfig.description,
+  url: siteConfig.url,
+  telephone: siteConfig.phone,
+  image: absoluteUrl(siteConfig.ogImage),
+  priceRange: siteConfig.priceRange,
+  servesCuisine: siteConfig.servesCuisine,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: siteConfig.address.streetAddress,
+    addressLocality: siteConfig.address.addressLocality,
+    addressRegion: siteConfig.address.addressRegion,
+    addressCountry: siteConfig.address.addressCountry,
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: siteConfig.geo.latitude,
+    longitude: siteConfig.geo.longitude,
+  },
+  openingHoursSpecification: siteConfig.openingHours.map((hours) => ({
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: hours.dayOfWeek,
+    opens: hours.opens,
+    closes: hours.closes,
+  })),
+  sameAs: [siteConfig.sns.instagram],
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

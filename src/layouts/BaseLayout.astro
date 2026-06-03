@@ -1,46 +1,72 @@
 ---
-import { siteConfig } from '../config/site';
+import { siteConfig, absoluteUrl } from '../config/site';
 
 import '../styles/reset.css';
 import '../styles/global.scss';
 
 import Header from '../components/common/Header.astro';
 import Footer from '../components/common/Footer.astro';
+import JsonLd from '../components/seo/JsonLd.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  lang?: string;
+  ogImage?: string;
+  noindex?: boolean;
+}
 
 const {
   title = siteConfig.title,
   description = siteConfig.description,
   lang = siteConfig.lang,
+  ogImage = siteConfig.ogImage,
+  noindex = false,
 } = Astro.props;
+
+const canonicalUrl = absoluteUrl(Astro.url.pathname);
+const ogImageUrl = absoluteUrl(ogImage);
+const robotsContent = noindex ? 'noindex, nofollow' : 'index, follow';
 ---
 
 <html lang={lang}>
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <meta name="description" content={description} />
+		<meta name="format-detection" content="telephone=no" />
 
-    <link rel="canonical" href={`${siteConfig.url}${Astro.url.pathname}`} />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="keywords" content={siteConfig.keywords.join(', ')} />
+		<meta name="author" content={siteConfig.name} />
+		<meta name="robots" content={robotsContent} />
+		<meta name="theme-color" content={siteConfig.themeColor} />
 
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={`${siteConfig.url}${siteConfig.ogImage}`} />
-    <meta property="og:url" content={`${siteConfig.url}${Astro.url.pathname}`} />
-    <meta property="og:type" content="website" />
+		<link rel="canonical" href={canonicalUrl} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title}/>
-    <meta name="twitter:description" content={description} />
+		<meta property="og:site_name" content={siteConfig.name} />
+		<meta property="og:locale" content={siteConfig.locale} />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:image" content={ogImageUrl} />
+		<meta property="og:image:alt" content={`${siteConfig.name}のOGP画像`} />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Yuji+Syuku&display=swap" rel="stylesheet">
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImageUrl} />
 
-    <script src="../scripts/animation.ts"></script>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Yuji+Syuku&display=swap" rel="stylesheet" />
+
+		<JsonLd />
+		<script src="../scripts/animation.ts"></script>
 	</head>
 	<body>
     <div class="bg-layer" aria-hidden="true"></div>
