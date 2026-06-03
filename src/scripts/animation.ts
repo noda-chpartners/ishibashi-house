@@ -10,6 +10,8 @@ const prefersReducedMotion = window.matchMedia(
   '(prefers-reduced-motion: reduce)',
 ).matches;
 
+const isNarrowViewport = window.matchMedia('(max-width: 768px)').matches;
+
 // スクロールで下から現れる共通の表示アニメーション
 function revealOnScroll(
   targets: gsap.TweenTarget,
@@ -68,13 +70,15 @@ function initAnimations() {
   // 当店について：本文を順番に表示
   revealOnScroll('#about .text', { trigger: '#about .content', stagger: 0.12, y: 24 });
 
-  // 人気メニュー：奇数は左から、偶数は右から
+  // 人気メニュー：PCは左右から、スマホ・タブレットは下から（横スライドによる横スクロールを防ぐ）
   gsap.utils.toArray<HTMLElement>('.menu-item').forEach((item) => {
     const rank = Number(item.dataset.rank ?? 0);
     const fromLeft = rank % 2 === 1;
     gsap.from(item, {
       autoAlpha: 0,
-      x: fromLeft ? -60 : 60,
+      ...(isNarrowViewport
+        ? { y: 40 }
+        : { x: fromLeft ? -60 : 60 }),
       duration: 0.8,
       ease: 'power3.out',
       scrollTrigger: {
