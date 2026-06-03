@@ -1,7 +1,6 @@
----
-import { siteConfig, absoluteUrl } from '../config/site';
-
 import type { APIRoute } from 'astro';
+
+import { siteConfig } from '../config/site';
 
 export const GET: APIRoute = () => {
   const lastmod = new Date().toISOString().split('T')[0];

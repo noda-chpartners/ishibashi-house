@@ -1,7 +1,6 @@
----
-import { siteConfig, absoluteUrl } from '../config/site';
-
 import type { APIRoute } from 'astro';
+
+import { absoluteUrl } from '../config/site';
 
 export const GET: APIRoute = () => {
   const body = `User-agent: *
