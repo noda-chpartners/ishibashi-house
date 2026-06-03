@@ -3,7 +3,7 @@ export const siteConfig = {
   title: "居酒屋食堂 いしばしさん家 | 熊本市東区・健軍の居酒屋食堂",
   description:
     "熊本市東区・健軍電停近くの居酒屋食堂 いしばしさん家。昼はカレー、夜はお酒と食事を気軽に楽しめる居酒屋食堂です。からあげやハムカツなど人気メニューも。おひとり様からグループまでゆっくりお過ごしいただけます。",
-  url: "https://example.com",
+  url: "https://ishibashi-izakaya.pages.dev/",
   ogImage: "/ogp.png",
   lang: "ja",
   locale: "ja_JP",
