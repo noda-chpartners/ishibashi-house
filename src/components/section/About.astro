@@ -1,9 +1,14 @@
 ---
+import { Image } from 'astro:assets';
+
+import aboutImage from '../../assets/images/logo.png';
 ---
 <section class="section" id="about">
   <div class="inner">
     <div class="section-title">
-      <h2 class="title">いしばしさん家について</h2>
+      <h2 class="title">
+        <Image class="about-image" src={ aboutImage } alt="いしばしさん家" />
+      </h2>
     </div>
     <div class="content">
       <p class="text first">熊本市東区・健軍電停近くにある居酒屋食堂 いしばしさん家。</p>
@@ -17,6 +22,11 @@
 <style lang="scss">
   @use "../../styles/variables" as *;
   @use "../../styles/mixins" as *;
+
+  .about-image {
+    max-width: 200px;
+    width: 100%;
+  }
 
   .content {
     text-align: center;

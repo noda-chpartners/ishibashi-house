@@ -21,11 +21,12 @@ const sp = await getImage({ src: spHero, format: 'webp' });
   </picture>
 
   <div class="hero-content">
-    <p class="hero-copy">
-      <span class="hero-copy-line">うまい、</span>
-      <span class="hero-copy-line">安い、</span>
-      <span class="hero-copy-line">楽しい！</span>
-    </p>
+    <div class="hero-sign">
+      <p class="hero-copy">
+        <span class="hero-copy-line">肉業界36年の実績あり</span>
+        <span class="hero-copy-line">肉を美味しく食べて頂きます</span>
+      </p>
+    </div>
   </div>
 </section>
 
@@ -56,56 +57,57 @@ const sp = await getImage({ src: spHero, format: 'webp' });
 
   .hero-content {
     position: absolute;
-    bottom: clamp(20px, 4vh, 48px);
-    left: clamp(16px, 3vw, 48px);
+    top: 40%;
+    left: 65%;
     z-index: 3;
-    transform: rotate(-10deg);
-    transform-origin: left bottom;
+    transform: translate(-50%, -50%);
+  }
+
+  .hero-sign {
+    position: relative;
+    padding-top: clamp(8px, 1.4vw, 16px);
   }
 
   .hero-copy {
     display: flex;
-    flex-direction: column;
+    flex-direction: row-reverse;
     align-items: flex-start;
-    gap: clamp(4px, 0.8vw, 10px);
+    justify-content: center;
+    gap: clamp(10px, 1.5vw, 20px);
     margin: 0;
   }
 
   .hero-copy-line {
     display: inline-block;
-    padding: 0.05em 0.35em;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    padding: 0.35em 0.1em;
     border-radius: 4px;
     background-color: rgba(235, 65, 65, 0.88);
     color: yellow;
-    font-size: clamp(1.8rem, 5.5vw, 3.6rem);
+    font-size: clamp(1rem, 2.4vw, 1.6rem);
     font-weight: bold;
-    line-height: 1.25;
-    letter-spacing: 0.05em;
+    line-height: 1.3;
+    letter-spacing: 0.08em;
     white-space: nowrap;
 
     &:nth-child(2) {
-      margin-left: clamp(20px, 4vw, 48px);
+      margin-top: clamp(12px, 2vw, 24px);
       background-color: rgba(255, 221, 0, 0.92);
       color: rgba(235, 65, 65, 1);
       text-shadow: none;
     }
-
-    &:nth-child(3) {
-      margin-left: clamp(40px, 8vw, 96px);
-    }
   }
 
   @include tb {
-    .hero-content {
-      bottom: clamp(16px, 3vh, 32px);
-      left: clamp(12px, 4vw, 32px);
-      transform: rotate(-8deg);
+    .hero-copy-line {
+      font-size: clamp(0.9rem, 2.8vw, 1.4rem);
     }
   }
 
   @include sp {
     .hero-copy-line {
-      font-size: clamp(1.5rem, 8vw, 2.2rem);
+      font-size: clamp(0.8rem, 3.6vw, 1.2rem);
     }
   }
 </style>

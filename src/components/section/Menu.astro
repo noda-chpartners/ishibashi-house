@@ -1,7 +1,7 @@
 ---
 import { getImage } from 'astro:assets';
 
-import karaageSrc from '../../assets/images/karaage02.png';
+import karaageSrc from '../../assets/images/kara01.png';
 import hamukatsuSrc from '../../assets/images/hamukatsu02.png';
 import tanSrc from '../../assets/images/tan02.png';
 import roastSrc from '../../assets/images/roast02.png';
@@ -16,11 +16,11 @@ const [karaage, hamukatsu, tan, roast, egg] = await Promise.all([
 ]);
 
 const menu = [
-  { rank: 1, name: 'からあげ', note: 'ジューシーでカリッと揚がった人気No.1', price: '300円', img: karaage, alt: 'からあげ' },
-  { rank: 2, name: '至福のハムカツ', note: '外はサクサク、中はとろけるハムカツ', price: '500円', img: hamukatsu, alt: '至福のハムカツ' },
-  { rank: 3, name: '牛タンステーキ', note: '厚切り牛タンの贅沢ステーキ', price: '1,800円', img: tan, alt: '牛タンステーキ' },
-  { rank: 4, name: 'ローストビーフ(小)', note: '柔らかなレア仕上げのローストビーフ', price: '800円', img: roast, alt: 'ローストビーフ(小)' },
-  { rank: 5, name: 'だし巻き卵焼', note: '出汁の効いたふわふわ卵焼き', price: '450円', img: egg, alt: 'だし巻き卵焼' },
+  { rank: 1, name: 'からあげ', note: '軟骨、スジ等取り除き丁寧な下処理をして、一晩漬け込み手間暇かかりすぎな唐揚です。', price: '300円', img: karaage, alt: 'からあげ' },
+  { rank: 2, name: '至福のハムカツ', note: '絶品ロースハムを店主が手切りして生パン粉で包みました。最高の手切りタルタルソースでお召し上がり下さい。', price: '500円', img: hamukatsu, alt: '至福のハムカツ' },
+  { rank: 3, name: '牛タンステーキ', note: '厚切りの牛タンのステーキ贅沢ステーキの下に丁寧な下準備と3日間の漬け込み低温調理でじっくりと仕上げております。', price: '1,800円', img: tan, alt: '牛タンステーキ' },
+  { rank: 4, name: 'ローストビーフ(小)', note: 'ローストビーフによく合う肉の部位を選択して3日間かけての丁寧な下準備と漬け込みをしての低温調理で仕上げております。', price: '800円', img: roast, alt: 'ローストビーフ(小)' },
+  { rank: 5, name: 'だし巻き卵焼', note: 'キセキの卵を使用して、絶妙な割合で配合した出汁を使って、鉄板で焼きだし巻き卵に仕上げております。', price: '450円', img: egg, alt: 'だし巻き卵焼' },
 ];
 ---
 <section class="section" id="menu">
@@ -181,7 +181,6 @@ const menu = [
     .menu-item:nth-child(even) {
       flex-direction: column;
       align-items: center;
-      text-align: center;
     }
 
     .menu-item-body {
