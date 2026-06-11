@@ -42,6 +42,7 @@ export const siteConfig = {
   ],
   sns: {
     instagram: "https://www.instagram.com/ishibashisanchi_kengun/",
+    tabelog: "https://tabelog.com/kumamoto/A4301/A430101/43018063/",
   },
   themeColor: "#eb4141",
 } as const;

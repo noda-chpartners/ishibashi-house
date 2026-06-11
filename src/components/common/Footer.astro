@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
+import { siteConfig } from '../../config/site';
 
 import Logo from '../../assets/images/logo.png';
 
@@ -11,6 +12,8 @@ const navLinks = [
   { href: '#info', label: 'アクセス' },
   { href: '#contact', label: 'お問い合わせ' },
 ];
+
+const { sns } = siteConfig;
 ---
 <footer class="footer">
   <div class="footer-inner">
@@ -30,8 +33,13 @@ const navLinks = [
 
     <ul class="footer-sns">
       <li>
-        <a href="" class="footer-sns-link" target="_blank" rel="noopener noreferrer" aria-label="X">
+        <a href={ sns.instagram } class="footer-sns-link" target="_blank" rel="noopener noreferrer" aria-label="instagram">
           <Icon name="simple-icons:instagram" />
+        </a>
+      </li>
+      <li>
+        <a href={ sns.tabelog } class="footer-sns-link" target="_blank" rel="noopener noreferrer" aria-label="tabelog">
+          <Icon name="simple-icons:tabelog" />
         </a>
       </li>
     </ul>
@@ -68,6 +76,11 @@ const navLinks = [
   .footer-logo {
     display: block;
     max-width: 150px;
+  }
+
+  .footer-sns {
+    display: flex;
+    gap: 20px;
   }
 
   .footer-nav-list {

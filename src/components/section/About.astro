@@ -7,13 +7,14 @@ import aboutImage from '../../assets/images/logo.png';
   <div class="inner">
     <div class="section-title">
       <h2 class="title">
-        <Image class="about-image" src={ aboutImage } alt="いしばしさん家" />
+        <Image class="about-image" src={ aboutImage } width={200} height={200} alt="いしばしさん家" />
       </h2>
     </div>
     <div class="content">
       <p class="text first">熊本市東区・健軍電停近くにある居酒屋食堂 いしばしさん家。</p>
       <p class="text second">お昼は、シンプルでどこか懐かしいカレーを。</p>
       <p class="text third">夜は、お酒と食事を気軽に楽しめる居酒屋食堂として、</p>
+      <p class="text">日曜日と祝日はお酒片手に昼から楽しみませんか？</p>
       <p class="text four">おひとり様からグループまで、ゆっくり過ごせる空間をご用意しています。</p>
     </div>
   </div>
@@ -23,9 +24,17 @@ import aboutImage from '../../assets/images/logo.png';
   @use "../../styles/variables" as *;
   @use "../../styles/mixins" as *;
 
+  .section-title {
+    background-color: transparent;
+    border: none;
+  }
+
   .about-image {
-    max-width: 200px;
     width: 100%;
+    height: 100%;
+    background-color: rgba(235, 65, 65, 0.85);
+    border-radius: 50%;
+    object-fit: contain;
   }
 
   .content {

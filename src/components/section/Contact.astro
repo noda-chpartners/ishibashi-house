@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
+import { siteConfig } from '../../config/site';
 ---
 <section class="section" id="contact">
   <div class="inner">
@@ -8,10 +9,16 @@ import { Icon } from 'astro-icon/components';
     </div>
     <div class="content">
       <p class="lead">お問い合わせはお電話にて承っております。<br class="break" />お気軽にお問い合わせください。</p>
-      <a href="" class="tel-button">
-        <Icon name="mdi:phone" class="tel-icon" />
-        <span class="tel-number">096-369-0650</span>
-      </a>
+      <div class="cta-buttons">
+        <a href="tel:0963690650" class="tel-button">
+          <Icon name="mdi:phone" class="tel-icon" />
+          <span class="tel-number">096-369-0650</span>
+        </a>
+        <a class="tabelog-button" href={ siteConfig.sns.tabelog } target="_blank" rel="noopener noreferrer">
+          <Icon class="tabelog-icon" name="simple-icons:tabelog" />
+          <span>食べログを見る</span>
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -38,6 +45,13 @@ import { Icon } from 'astro-icon/components';
     }
   }
 
+  .cta-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+  }
+
   .tel-button {
     display: inline-flex;
     align-items: center;
@@ -61,5 +75,30 @@ import { Icon } from 'astro-icon/components';
   .tel-icon {
     font-size: 1.5rem;
   }
+
+  .tabelog-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 56px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 999px;
+  background-color: #ff9600; /* 食べログ系オレンジ */
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  transition: background-color 0.2s, opacity 0.2s;
+  @include sp {
+    padding: 16px 36px;
+  }
+  &:hover {
+    opacity: 0.9;
+  }
+}
+.tabelog-icon {
+  font-size: 1.5rem;
+}
 
 </style>

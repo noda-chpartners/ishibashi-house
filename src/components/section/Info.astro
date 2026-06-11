@@ -1,5 +1,9 @@
 ---
 import { Icon } from 'astro-icon/components';
+
+import { siteConfig } from '../../config/site';
+
+const { sns } = siteConfig;
 ---
 <section class="section" id="info">
   <div class="inner info">
@@ -28,7 +32,7 @@ import { Icon } from 'astro-icon/components';
           <div class="info-row">
             <dt class="info-label">アクセス</dt>
             <dd class="info-data">
-              健軍電停終点<br />
+              健軍電停終点から徒歩約270歩約3分<br />
               自衛隊通り右側
             </dd>
           </div>
@@ -52,7 +56,8 @@ import { Icon } from 'astro-icon/components';
           <div class="info-row sns">
             <dt class="info-label">SNS</dt>
             <dd class="info-data">
-              <a href="" class="sns-link" target="_blank" rel="noopener noreferrer"><Icon name="simple-icons:instagram" /></a>
+              <a href={ sns.instagram } class="sns-link" target="_blank" rel="noopener noreferrer"><Icon name="simple-icons:instagram" /></a>
+              <a href={ sns.tabelog } class="sns-link" target="_blank" rel="noopener noreferrer"><Icon name="simple-icons:tabelog" /></a>
             </dd>
           </div>
         </dl>
@@ -84,7 +89,7 @@ import { Icon } from 'astro-icon/components';
     margin: 80px auto;
     padding: 40px;
     color: #fff;
-    z-index: -1;
+    z-index: 1;
 
     &::after {
       position: absolute;
