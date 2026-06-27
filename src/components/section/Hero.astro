@@ -63,10 +63,18 @@ const sp = await getImage({ src: spHero, format: 'webp' });
     transform: translate(-50%, -50%);
   }
 
+
   .hero-sign {
     position: relative;
     padding-top: clamp(8px, 1.4vw, 16px);
   }
+
+@media (min-width: 768px) {
+  .hero-sign {
+    padding-top: clamp(140px, 10vh, 120px);
+  }
+}
+
 
   .hero-copy {
     display: flex;
