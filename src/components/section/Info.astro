@@ -39,19 +39,27 @@ const { sns } = siteConfig;
           <div class="info-row">
             <dt class="info-label">営業時間</dt>
             <dd class="info-data">
-              [平日（昼）] 11:30~14:00(14:00オーダーストップ)<br />
-              [平日（夜）] 18:00~23:00(22:40オーダーストップ)<br />
-              [土] 土曜日は夜のみ(昼は無し)<br />
-              [日祝] 12:00~20:00(19:00オーダーストップ)
+              ●Theシンプルカレー<br />
+              【月〜土（昼）】<br />11:30~14:00(14:00オーダーストップ)<br />
+              ●居酒屋食堂 いしばしさん家<br />
+              【月•火•水•金•土（夜）】<br />18:00~23:00(22:40オーダーストップ)<br />
+              【日祝（昼飲み）】<br />12:00〜20:00（19:30オーダーストップ）
             </dd>
           </div>
           <div class="info-row">
             <dt class="info-label">定休日</dt>
-            <dd class="info-data">昼は土曜日夜は木曜日と月2回火曜日インスタにてご確認お願いします。</dd>
+            <dd class="info-data">
+  <div>
+    ●Theシンプルカレー<br/>不定休<br/>
+    ●居酒屋食堂いしばしさん家<br/>
+    毎週木曜日と月2回火曜日<br/>
+    <span class="info-note">※インスタにてご確認お願いします。</span>
+  </div>
+</dd>
           </div>
           <div class="info-row">
             <dt class="info-label">席数</dt>
-            <dd class="info-data">１階 カウンター7席<br />２人 テーブル席1卓<br />２階 4人テーブル席5卓<br />最大24名様</dd>
+            <dd class="info-data">１階<br />カウンター7席<br />２人 テーブル席1卓<br />２階<br />4人テーブル席5卓<br />最大24名様</dd>
           </div>
           <div class="info-row sns">
             <dt class="info-label">SNS</dt>
@@ -140,11 +148,17 @@ const { sns } = siteConfig;
     flex: 1 1 0;
     min-width: 0;
     gap: 20px;
-
     @include sp {
       font-size: clamp(0.7rem, 5vw, 0.9rem);
     }
   }
+
+.info-note {
+  display: block;
+  flex-basis: 100%;
+  font-size: 0.85em;
+  margin-top: 0.25em;
+}
 
   .tel {
     text-decoration: underline;
